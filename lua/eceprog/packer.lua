@@ -1,3 +1,4 @@
+--[[
 local packerpath = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 local packerrepo = "https://github.com/wbthomason/packer.nvim"
 
@@ -14,6 +15,7 @@ if not (vim.uv or vim.loop).fs_stat(packerpath) then
         os.exit(1)
     end
 end
+--]]
 
 -- autocommand that reloads neovim and installs/updates/removes plugins when file is saved
 vim.cmd([[ 
@@ -33,6 +35,7 @@ end
 return packer.startup(function(use)
     use("wbthomason/packer.nvim") -- packer
 
+    --[[
     use("nvim-treesitter/nvim-treesitter")
 
     use({
@@ -49,6 +52,7 @@ return packer.startup(function(use)
             })
         end
     })
+    --]]
 
     -- colorschemes
     use("bluz71/vim-nightfly-guicolors")

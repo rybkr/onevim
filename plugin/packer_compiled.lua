@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/ryanbaker/.cache/nvim/packer_hererocks/2.1.1727870382/share/lua/5.1/?.lua;/Users/ryanbaker/.cache/nvim/packer_hererocks/2.1.1727870382/share/lua/5.1/?/init.lua;/Users/ryanbaker/.cache/nvim/packer_hererocks/2.1.1727870382/lib/luarocks/rocks-5.1/?.lua;/Users/ryanbaker/.cache/nvim/packer_hererocks/2.1.1727870382/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/ryanbaker/.cache/nvim/packer_hererocks/2.1.1727870382/lib/lua/5.1/?.so"
+local package_path_str = "/home/shay/a/baker852/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/shay/a/baker852/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/shay/a/baker852/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/shay/a/baker852/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/shay/a/baker852/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -76,97 +76,77 @@ time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
   ["Comment.nvim"] = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/Comment.nvim",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
   ReplaceWithRegister = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/ReplaceWithRegister",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/ReplaceWithRegister",
     url = "https://github.com/vim-scripts/ReplaceWithRegister"
   },
   catppuccin = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/catppuccin",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/catppuccin",
     url = "https://github.com/catppuccin/nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/lualine.nvim",
     url = "https://github.com/nvim-lualine/lualine.nvim"
   },
   ["molokai.nvim"] = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/molokai.nvim",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/molokai.nvim",
     url = "https://github.com/UtkarshVerma/molokai.nvim"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/nvim-tree/nvim-tree.lua"
-  },
-  ["nvim-treesitter"] = {
-    loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
-    url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
     url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
-  },
-  playground = {
-    config = { "\27LJ\2\n­\1\0\0\5\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0005\3\3\0004\4\0\0=\4\4\3=\3\6\2B\0\2\1K\0\1\0\15playground\1\0\1\15playground\0\fdisable\1\0\4\venable\2\20persist_queries\1\15updatetime\3\25\fdisable\0\nsetup\28nvim-treesitter.configs\frequire\0" },
-    loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/playground",
-    url = "https://github.com/nvim-treesitter/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["telescope-fzf-native.nvim"] = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/telescope-fzf-native.nvim",
     url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
   ["vim-nightfly-guicolors"] = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/vim-nightfly-guicolors",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/vim-nightfly-guicolors",
     url = "https://github.com/bluz71/vim-nightfly-guicolors"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/vim-surround",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/vim-surround",
     url = "https://github.com/tpope/vim-surround"
   },
   ["vim-tmux-navigator"] = {
     loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    path = "/home/shay/a/baker852/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
-  },
-  vimslides = {
-    loaded = true,
-    path = "/Users/ryanbaker/.local/share/nvim/site/pack/packer/start/vimslides",
-    url = "/Users/ryanbaker/projects/vimslides"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: playground
-time([[Config for playground]], true)
-try_loadstring("\27LJ\2\n­\1\0\0\5\0\a\0\v6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\5\0005\3\3\0004\4\0\0=\4\4\3=\3\6\2B\0\2\1K\0\1\0\15playground\1\0\1\15playground\0\fdisable\1\0\4\venable\2\20persist_queries\1\15updatetime\3\25\fdisable\0\nsetup\28nvim-treesitter.configs\frequire\0", "config", "playground")
-time([[Config for playground]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

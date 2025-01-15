@@ -1,14 +1,17 @@
+
+local config = "eceprog"
+
 -- plugin setup
-require("ryanbaker.packer")
+require(config .. ".packer")
 
 -- core setup files
-require("ryanbaker.core.options")
-require("ryanbaker.core.keymaps")
-require("ryanbaker.core.colorscheme")
+require(config .. ".core.options")
+require(config .. ".core.keymaps")
+require(config .. ".core.colorscheme")
 
 -- plugins
-require("ryanbaker.plugins.comment")
-require("ryanbaker.plugins.nvim-tree")
-require("ryanbaker.plugins.lualine")
-require("ryanbaker.plugins.telescope")
-require("ryanbaker.plugins.treesitter")
+require(config .. ".plugins.comment")
+require(config .. ".plugins.nvim-tree")
+require(config .. ".plugins.lualine")
+require(config .. ".plugins.telescope")
+require(config .. ".plugins.treesitter")
