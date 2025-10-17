@@ -33,3 +33,5 @@ opt.splitright = true
 opt.splitbelow = true
 
 opt.mouse = 'a'
+
+vim.g.zig_fmt_autosave = 0

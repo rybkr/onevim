@@ -1,4 +1,4 @@
-local cs = "nightfly"
+local cs = "zaibatsu"
 
 -- set colorscheme with protected call in case it isn't installed
 local status, _ = pcall(vim.cmd, "colorscheme" .. ' ' .. cs)

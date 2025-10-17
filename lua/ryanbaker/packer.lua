@@ -1,4 +1,5 @@
 local packerpath = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+
 local packerrepo = "https://github.com/wbthomason/packer.nvim"
 
 -- install packer if not installed
@@ -51,9 +52,15 @@ return packer.startup(function(use)
     })
 
     -- colorschemes
+    use("bluz71/vim-nightfly-colors")
     use("bluz71/vim-nightfly-guicolors")
     use("UtkarshVerma/molokai.nvim")
     use { "catppuccin/nvim", as = "catppuccin" }
+    use("haystackandroid/rusticated")
+    use("rktjmp/lush.nvim")
+    use("Scysta/pink-panic.nvim")
+
+    use("rbaker1776/vimslides")
 
     use("christoomey/vim-tmux-navigator") -- tmux and split navigation
 
@@ -75,7 +82,7 @@ return packer.startup(function(use)
     use({ "nvim-telescope/telescope-fzf-native.nvim", run="make" })
     use({ "nvim-telescope/telescope.nvim", branch="0.1.x" })
 
-    --use("~/projects/vimslides")
+    use("folke/zen-mode.nvim")
 
     -- autocomplete
     -- use("hrsh7th/nvim-cmp")

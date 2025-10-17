@@ -1,5 +1,4 @@
-
-local config = "eceprog"
+local config = "ryanbaker"
 
 -- plugin setup
 require(config .. ".packer")

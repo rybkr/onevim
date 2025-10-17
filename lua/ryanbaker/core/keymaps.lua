@@ -29,28 +29,56 @@ keymap.set('n', '<leader>fc', '<cmd>Telescope grep_string<cr>') -- find string u
 keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<cr>') -- list open buffers in current neovim instance
 keymap.set('n', '<leader>fh', '<cmd>Telescope help_tags<cr>') -- list available help tags
 
---[[
-keymap.set(
-    'n',
-    '<leader>g',
-    ":lua require('ryanbaker.functions.incguard').write_include_guard()<CR>",
-    { noremap=true, silent=true }
-)
---]]
+keymap.set('i', '<C-2>', '²');
+
+
+function write_cpp_inc_guard()
+    math.randomseed(os.time())
+    local r = string.format("%08X%08X", math.random(0, 2^32 - 1), math.random(0, 2^32 - 1))
+    local filename = vim.fn.expand("%:t"):upper():gsub("[^A-Za-z0-9]", "_")
+    local guard = filename .. "_" .. r
+    vim.api.nvim_buf_set_lines(0, 0, 0, false, { "#ifndef " .. guard, "#define " .. guard, "", "", "", "", "#endif // " .. guard })
+end
 
 vim.api.nvim_create_augroup("cpp-keymaps", { clear = true })
 
 vim.api.nvim_create_autocmd("FileType", {
     group = "cpp-keymaps",
-    pattern = "cpp",
+    pattern = { "c", "cpp", "h", "hpp" },
     callback = function()
-        keymap.set('n', '<leader>cx', ':!clang++ -std=c++23 % -o exe && ./exe<CR>', { noremap = true, buffer = true, desc = "Compile and execute a C++ file" })
+        keymap.set('n', '<leader>x', ':!clang++ -std=c++23 % && ./a.out; rm a.out<CR>', { noremap = true, buffer = true, desc = "Compile and execute a C++ file" })
+        keymap.set('n', '<leader>g', ':lua write_cpp_inc_guard()<CR>dd3ko', { noremap = true, silent = true })
     end,
 })
 
-vim.api.nvim_create_user_command("ZoomToPresent", function()
-    os.execute('osascript -e \'tell application "System Events" to keystroke "0" using command down\'')
-    for i = 1, 21 do
-        os.execute('osascript -e \'tell application "System Events" to keystroke "+" using command down\'')
-    end
-end, {})
+
+TeX = {}
+
+TeX.live_compile = false
+
+vim.api.nvim_create_augroup("tex-keymaps", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+    group = "tex-keymaps",
+    pattern = { "tex" },
+    callback = function()
+        keymap.set('n', '<leader>x', ':!lualatex --interaction=nonstopmode --output-dir=build %<CR>', { noremap = true, buffer = true, desc = "Compile a LaTeX file" })
+        keymap.set('n', '<leader>ll', '[[:lua TeX.live_compile = not TeX.live_compile<CR>]]', { noremap = true, buffer = true, desc = "Toggle LaTeX live compile" })
+    end,
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+    group = "tex-keymaps",
+    pattern = "*.tex",
+    callback = function()
+        if TeX.live_compile then
+            vim.cmd('!lualatex --interaction=nonstopmode --output-dir=build %')
+        end
+    end,
+})
+
+vim.cmd [[
+    autocmd FileType tex setlocal noexpandtab shiftwidth=4 softtabstop=4
+    autocmd FileType tex setlocal smartindent
+    autocmd FileType tex setlocal paste
+]]
