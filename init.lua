@@ -1,16 +1,10 @@
-local config = "ryanbaker"
+-- ============================================================================
+-- ONEVIM - Because I typed "neovim" too fast
+-- ============================================================================
 
--- plugin setup
-require(config .. ".packer")
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- core setup files
-require(config .. ".core.options")
-require(config .. ".core.keymaps")
-require(config .. ".core.colorscheme")
-
--- plugins
-require(config .. ".plugins.comment")
-require(config .. ".plugins.nvim-tree")
-require(config .. ".plugins.lualine")
-require(config .. ".plugins.telescope")
-require(config .. ".plugins.treesitter")
+require("onevim.core.options")
+require("onevim.core.keymaps")
+require("onevim.core.lazy")
