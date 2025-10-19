@@ -34,3 +34,5 @@ opt.undofile = true
 opt.backspace = "indent,eol,start"
 
 opt.mouse = 'a'
+
+opt.clipboard:append("unnamedplus")
