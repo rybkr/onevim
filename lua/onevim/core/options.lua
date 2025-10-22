@@ -1,6 +1,6 @@
 local opt = vim.opt
 
--- Reference: https://neovim.io/doc/user/options.html
+-- See: https://neovim.io/doc/user/options.html
 
 opt.number         = true
 opt.relativenumber = true
@@ -14,6 +14,18 @@ opt.smartindent = true
 opt.wrap          = false
 opt.scrolloff     = 8
 opt.sidescrolloff = 8
+
+opt.foldmethod     = "expr"
+opt.foldexpr       = "nvim_treesitter#foldexpr()"
+opt.foldenable     = false
+opt.foldlevel      = 99
+opt.foldlevelstart = 99
+opt.foldcolumn     = '1'
+
+opt.fillchars = {
+    fold = ' ',
+    foldsep = ' ',
+}
 
 opt.ignorecase = false
 opt.smartcase  = false
