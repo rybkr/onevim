@@ -8,3 +8,5 @@ vim.g.maplocalleader = " "
 require("onevim.core.options")
 require("onevim.core.keymaps")
 require("onevim.core.lazy")
+
+vim.cmd([[colorscheme tokyonight]])
