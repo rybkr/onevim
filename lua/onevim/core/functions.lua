@@ -1,5 +1,7 @@
 vim.api.nvim_create_user_command('InsertHeaderGuard', function()
-      local filename = vim.fn.expand('%:t')         -- Get filename with extension
+    math.randomseed(os.time())
+
+    local filename = vim.fn.expand('%:t')           -- Get filename with extension
     local name_without_ext = vim.fn.expand('%:t:r') -- Filename without extension
     local ext = vim.fn.expand('%:e')                -- Just the extension
     
