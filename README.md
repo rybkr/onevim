@@ -13,6 +13,9 @@ A small Neovim configuration that stays opinionated without turning into a frame
 - File tree with NvimTree
 - Syntax highlighting and indentation with Treesitter
 - Fold previews with nvim-ufo
+- LSP support with Mason and nvim-lspconfig
+- Completion with nvim-cmp
+- Formatting with conform.nvim
 - Git signs in the gutter
 - Comment toggles and autopairs
 - Text-case conversion helpers
@@ -40,6 +43,7 @@ Plugins install automatically. Restart once after initial install.
 - git
 - Nerd font (optional, for icons)
 - ripgrep (optional, for live grep)
+- `stylua` and `clang-format` (optional, for external formatting outside Mason)
 
 After the first successful plugin sync, commit the generated `lazy-lock.json` if you want reproducible plugin versions.
 
@@ -62,6 +66,17 @@ Type `<leader>?` to view all keymaps.
 | `gcc` | Comment line |
 | `gc` (visual) | Comment selection |
 | `ga.` | Text-case Telescope picker |
+| `<leader>fm` | Format buffer |
+
+### LSP
+| Key | Action |
+|:-|:-|
+| `gd` | Go to definition |
+| `gr` | References |
+| `gI` | Go to implementation |
+| `K` | Hover documentation |
+| `<leader>rn` | Rename symbol |
+| `<leader>ca` | Code action |
 
 ### Files
 | Key | Action |
@@ -80,6 +95,11 @@ Type `<leader>?` to view all keymaps.
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - fuzzy finder
 - [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) - file explorer
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - statusline
+- [mason.nvim](https://github.com/williamboman/mason.nvim) - external tool installer
+- [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Mason bridge for LSP servers
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - LSP client setup
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - completion
+- [conform.nvim](https://github.com/stevearc/conform.nvim) - formatting
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - syntax highlighting
 - [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) - folds and fold previews
 - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - git gutter
@@ -134,6 +154,7 @@ Create a new file in `lua/onevim/plugins/` or extend an existing spec file.
     │   └── options.lua
     └── plugins/
         ├── colorscheme.lua
+        ├── lsp.lua
         ├── lualine.lua
         ├── misc.lua
         ├── nvim-tree.lua
