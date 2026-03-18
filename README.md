@@ -1,21 +1,25 @@
-# 1️⃣ Onevim
+# Onevim
 
 > Because typing `neovim` fast is hard
 
-A Neovim configuration that doesn't try to be a JetBrains product.
+A small Neovim configuration that stays opinionated without turning into a framework.
 
 ![](https://img.shields.io/badge/Neovim-0.9+-green.svg)
 ![](https://img.shields.io/badge/license-MIT-blue.svg)
 
-## ❗️ Features
+## Features
 
 - Fuzzy finding with Telescope
 - File tree with NvimTree
-- Syntax highlighting with Treesitter
+- Syntax highlighting and indentation with Treesitter
+- Fold previews with nvim-ufo
+- Git signs in the gutter
+- Comment toggles and autopairs
+- Text-case conversion helpers
 - Lazy-loaded plugins
-- TokyoNight colorscheme
+- TokyoNight as the default colorscheme
 
-## 📦 Installation
+## Installation
 
 ```bash
 # Backup existing config (optional)
@@ -33,10 +37,13 @@ Plugins install automatically. Restart once after initial install.
 ### Requirements
 
 - Neovim >= 0.9.4
+- git
 - Nerd font (optional, for icons)
 - ripgrep (optional, for live grep)
 
-## 🎹 Keybindings
+After the first successful plugin sync, commit the generated `lazy-lock.json` if you want reproducible plugin versions.
+
+## Keybindings
 
 Leader: `Space` (configurable in `init.lua`)
 
@@ -47,12 +54,14 @@ Type `<leader>?` to view all keymaps.
 |:-|:-|
 | `<leader>?` | Show keymaps |
 | `<leader>nh` | Clear highlights |
+| `zK` | Peek folded text |
 
 ### Editing
 | Key | Action |
 |:-|:-|
 | `gcc` | Comment line |
 | `gc` (visual) | Comment selection |
+| `ga.` | Text-case Telescope picker |
 
 ### Files
 | Key | Action |
@@ -62,18 +71,24 @@ Type `<leader>?` to view all keymaps.
 | `<leader>fg` | Grep |
 | `<leader>fb` | Buffers |
 | `<leader>fh` | Help |
+| `<leader>g` | Insert header guard in `*.h` and `*.hpp` |
 
-## 🔌 Plugins
+## Plugins
 
 - [lazy.nvim](https://github.com/folke/lazy.nvim) - plugin manager
-- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) - colorscheme
+- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim) - default colorscheme
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - fuzzy finder
 - [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) - file explorer
 - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - statusline
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - syntax highlighting
+- [nvim-ufo](https://github.com/kevinhwang91/nvim-ufo) - folds and fold previews
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - git gutter
+- [Comment.nvim](https://github.com/numToStr/Comment.nvim) - commenting
+- [nvim-autopairs](https://github.com/windwp/nvim-autopairs) - auto-close pairs
+- [text-case.nvim](https://github.com/johmsalas/text-case.nvim) - case conversion
 - [which-key.nvim](https://github.com/folke/which-key.nvim) - keybinding hints
 
-## 🎨 Customize
+## Customize
 
 This is the objectively correct config. No customization required.
 
@@ -89,41 +104,41 @@ opt.relativenumber = false
 ### Keybindings
 Edit `lua/onevim/core/keymaps.lua`:
 ```lua
-keymap("n", "<leader>w", ":w<CR>", opts)
+vim.keymap.set("n", "<leader>w", "<cmd>write<CR>", { desc = "Write buffer" })
 ```
 
 ### Colorscheme
-Edit `lua/onevim/plugins/colorscheme.lua`:
-```lua
-return {
-  "catppuccin/nvim",
-  name = "catppuccin",
-  lazy = false,
-  priority = 1000,
-  config = function()
-    vim.cmd([[colorscheme catppuccin]])
-  end,
-}
-```
+Edit `init.lua` or `lua/onevim/plugins/colorscheme.lua` to switch themes.
 
 ### Add Plugins
-Create a new file in `lua/onevim/plugins/` or add to `misc.lua`.
+Create a new file in `lua/onevim/plugins/` or extend an existing spec file.
 
-## 📂 Structure
+## Tooling
 
-```
+- `stylua` configuration lives in `.stylua.toml`
+- `selene` configuration lives in `selene.toml`
+- `lazy-lock.json` should be committed after plugin sync if you want reproducible installs
+
+## Structure
+
+```text
 ~/.config/nvim/
 ├── init.lua
+├── .stylua.toml
+├── selene.toml
 └── lua/onevim/
     ├── core/
-    │   ├── options.lua
+    │   ├── functions.lua
     │   ├── keymaps.lua
-    │   └── lazy.lua
+    │   ├── lazy.lua
+    │   └── options.lua
     └── plugins/
         ├── colorscheme.lua
-        ├── telescope.lua
-        ├── nvim-tree.lua
-        ├── treesitter.lua
         ├── lualine.lua
-        └── misc.lua
+        ├── misc.lua
+        ├── nvim-tree.lua
+        ├── nvim-ufo.lua
+        ├── telescope.lua
+        ├── text-case.lua
+        └── treesitter.lua
 ```
